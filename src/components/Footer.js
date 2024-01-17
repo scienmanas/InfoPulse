@@ -23,7 +23,7 @@ export default class Footer extends Component {
                         <div className="email-entry flex gap-2 items-center mt-2">
                             <div className="field flex flex-col">
                                 <input
-                                    type="email"
+                                    type="text"
                                     placeholder='Connect with creator !'
                                     className='bg-transparent border-b-2 border-gray-400 sm:w-80 w-72 h-10 outline-none text-white focus:border-blue-500'
                                     // onKeyDown={} handle press
