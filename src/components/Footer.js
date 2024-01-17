@@ -48,7 +48,7 @@ export default class Footer extends Component {
                         />
                     </div>
                 </div>
-                <div className="content-2 flex gap-14 justify-evenly flex-wrap">
+                <div className="content-2 flex gap-14 justify-normal lg:justify-evenly flex-wrap">
                     <div className="compnay-logo select-none">
                         <div className="logo w-fit h-fit">
                             <img

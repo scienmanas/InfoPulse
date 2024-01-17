@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Shokhiful';
+    src: local('Shokhiful') , url("./Fonts/Shokhiful\ Trial.ttf");
+}
+
+.navbar-text-custom {
+    font-family: Shokhiful, 'Courier New', Courier, monospace;
+    letter-spacing: 0.1em;
+    font-size: 1.2rem;
+    @apply font-bold;
+}
+
+.blurred-navbar {
+    @apply rounded-b-md;
+    backdrop-filter: blur(3px);
+}

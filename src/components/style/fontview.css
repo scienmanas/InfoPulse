@@ -7,9 +7,35 @@
     src: local('VarelaRound') , url('./Fonts/VarelaRound-Regular.ttf');
 }
 
+@font-face {
+    font-family: 'RIntjany' ;
+    src: local('RIntjany') , url('./Fonts/RIntjany.ttf');
+}
+
+@font-face {
+    font-family: 'DEGUNFA';
+    src: local('DEGUNFA') , url('./Fonts/DEGUNFA\ Trial.ttf');
+}
+
+.custom-font-head-hero {
+    font-family: 'DEGUNFA', 'Courier New', Courier, monospace;
+    /* font-weight: 400;s */
+    line-height: 2rem;
+    font-size: 40px;
+    /* letter-spacing: 0.05em; */
+
+}
+
 .text-font-frontview {
     font-family: 'VarelaRound';
     font-size: 1.5rem;
+    /* font-weight: 400;s */
+    line-height: 2rem;
+    /* letter-spacing: 0.05em; */
+}
+
+.bg-text {
+    font-family: 'RIntjany', 'Courier New', Courier, monospace;
     /* font-weight: 400;s */
     line-height: 2rem;
     /* letter-spacing: 0.05em; */
