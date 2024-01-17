@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'VarelaRound';
+    src: local('VarelaRound') , url('./Fonts/VarelaRound-Regular.ttf');
+}
+
+.text-font-frontview {
+    font-family: 'VarelaRound';
+    font-size: 1.5rem;
+    /* font-weight: 400;s */
+    line-height: 2rem;
+    /* letter-spacing: 0.05em; */
+}
