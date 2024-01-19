@@ -23,7 +23,8 @@ export default class Navbar extends Component {
                         <div className="line w-6 h-[2.5px] bg-slate-600"></div>
                         <div className="line w-6 h-[2.5px] bg-slate-600"></div>
                     </button>
-                    <div className="navbar-items fixed top-4 left-4 p-5 sm:p-0 w-auto right-4 sm:static sm:bg-none bg-transparent bg-gradient-to-tr from-[#009245] to-[#FCEE21] rounded-lg flex flex-col sm:flex-row sm:w-fit shadow-xl sm:shadow-none hidden">
+                    <div className="navbar-items fixed top-4 left-4 p-5 sm:p-0 w-auto right-4 sm:static sm:bg-none bg-transparent bg-gradient-to-tr from-[#009245] to-[#FCEE21] rounded-lg flex flex-col sm:flex-row sm:w-fit shadow-xl sm:shadow-none ">
+                        {/* Hidden add above */}
                         <div className="navigation text-[#4C4C4C] navbar-text-custom  sm:text-white w-fit flex sm:flex-row flex-col gap-x-5 gap-y-2 sm:w-fit h-fit items-center">
                             <div className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1  home">Home</div>
                             <div className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1  options2">Option</div>
