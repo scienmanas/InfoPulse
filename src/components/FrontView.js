@@ -18,7 +18,7 @@ export default class FrontView extends Component {
                         <div className="text-white custom-font-head-hero select-none">InfoPulse <span className='font-sans'>!</span> </div>
                         <div className='text-transparent bg-clip-text bg-gradient-to-r from-[#EE9CA7] to-[#FFDDE1] leading-tight bg-text text-wrap animate-pulse'>Where Stories Unfold, and News Takes Flight. Stay Connected, Stay Informed.</div>
                     </div>
-                    <div className="image-1 z-10 w-fit absolute md:top-28 top-24  md:left-[70%] rotate-12 border-8 rounded-md shadow-2xl shadow-green-600 left-5">
+                    <div className="image-1 z-10 w-fit absolute md:top-28 top-24  md:left-[60%] rotate-12 border-8 rounded-md shadow-2xl shadow-green-600 left-5">
                         <img
                             src={showup_1}
                             alt="bg-text-1"

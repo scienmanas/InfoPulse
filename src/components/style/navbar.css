@@ -10,8 +10,8 @@
 .navbar-text-custom {
     font-family: Shokhiful, 'Courier New', Courier, monospace;
     letter-spacing: 0.1em;
-    font-size: 1.2rem;
-    @apply font-bold;
+    /* font-size: 1.2rem; */
+    @apply font-bold lg:text-[1.2rem] sm:text-base text-xl;
 }
 
 .blurred-navbar {

@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import FrontView from './components/FrontView';
 import News from './components/News';
 import Footer from './components/Footer';
+import NewsItems from './components/NewsItems';
 
 import React, { Component } from 'react'
 
@@ -17,6 +18,7 @@ export default class App extends Component {
      <Navbar />
      <FrontView />
      < News />
+     {/* <NewsItems /> */}
      < Footer />
      </>
     )

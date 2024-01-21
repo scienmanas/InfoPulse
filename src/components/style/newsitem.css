@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Galebok';
+    src: local('Galebok'), url('./Fonts/Galebok\ Demo.otf');
+}
+
+@font-face {
+    font-family: 'youmurdererbb_reg';
+    src: local('youmurdererbb_reg'), url('./Fonts/youmurdererbb_reg.ttf');
+}
+
+@font-face {
+    font-family: 'Dosis';
+    src: local('Dosis'), url('./Fonts/Dosis-ExtraBold.ttf');
+}
+
+@font-face {
+    font-family: 'Typo_Round';
+    src: local('Typo_Round'), url(./Fonts/Typo_Round_Regular_Demo.otf);
+}
+
+@font-face {
+    font-family: 'Odin' ;
+    src: local('Odin') , url('./Fonts/Odin\ Rounded\ -\ Regular.otf');
+}
+
+.font-date {
+    font-family: youmurdererbb_reg, 'Courier New', Courier, monospace;
+}
+
+.font-source {
+    font-family: Galebok, 'Courier New', Courier, monospace;
+}
+
+.title-font {
+    font-family: Dosis, 'Courier New', Courier, monospace;
+    @apply text-xl;
+}
+
+.description-font {
+    font-family: Typo_Round, 'Courier New', Courier, monospace;
+}
+
+.type-font {
+    font-family: Odin, 'Courier New', Courier, monospace;
+}

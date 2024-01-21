@@ -11,7 +11,7 @@ import logo from './assets/logo.png'
 export default class Footer extends Component {
     render() {
         return (
-            <div className='fotter bg-gradient-to-tr p-9 pt-14 w-full h-fit from-[#1a1a1a] to-gray-700 rounded-sm flex flex-col gap-16'>
+            <div className='static fotter bg-gradient-to-tr p-9 pt-14 w-full h-fit from-[#1a1a1a] to-gray-700 rounded-sm flex flex-col gap-16'>
                 <div className="content-1 flex justify-around flex-wrap items-center w-full h-fit">
                     <div className="texts flex flex-col gap-4 w-fit h-fit">
                         <div className="text-1 select-none text-green-500">
