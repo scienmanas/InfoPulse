@@ -18,8 +18,10 @@ export default class NewsItems extends Component {
         <div className="text-content px-3 h-full flex flex-col justify-between ">
           <div className="up flex flex-col">
             <p className='category flex flex-row items-center gap-x-1'><TfiAnnouncement className='text-slate-700' /><span className='text-blue-600 animate-pulse text-sm font-bold type-font'>News Mania</span> </p>
-            <h1 className='title-font mt-1'>Sachin Tendulkar: Indian cricket legend warns of 'disturbing' deepfake video
-            </h1>
+            <a href="#">
+              <h1 className='title-font mt-1'>Sachin Tendulkar: Indian cricket legend warns of 'disturbing' deepfake video
+              </h1>
+            </a>
             <p className='description-font mt-6'>The fake video appears to show Sachin Tendulkar promoting an online gaming app</p>
           </div>
           <div className="bottoms flex flex-col">
@@ -31,7 +33,7 @@ export default class NewsItems extends Component {
                   <p className='w-fit h-fit text-sm font-source'>BBC News</p>
                 </div>
                 <div className="source-link">
-                  <a href="#"><CiGlobe  className='text-xl'/></a>
+                  <a href="#"><CiGlobe className='text-xl' /></a>
                 </div>
               </div>
             </div>
