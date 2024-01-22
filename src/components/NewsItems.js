@@ -9,22 +9,22 @@ export default class NewsItems extends Component {
     let { title, description, type, imgUrl , url, author ,date} = this.props;
     return (
       <div className="card pb-[2px] bg-white-200 shadow-2xl rounded-lg flex flex-col gap-y-3 w-[320px] items-center h-[470px]">
-        <div className="image h-auto w-auto justify-normal">
+        <div className="image h-80 w-auto justify-normal">
           <img src={imgUrl}
-            className='rounded-t-lg pointer-events-none'
-            alt="news"
+            className='rounded-t-lg pointer-events-none h-48 w-auto'
+            alt="news_image"
           />
         </div>
         <div className="text-content px-3 h-full flex flex-col justify-between ">
           <div className="up flex flex-col">
             <p className='category flex flex-row items-center gap-x-1'><TfiAnnouncement className='text-slate-700 ' /><span className='text-blue-600 animate-pulse text-sm font-bold type-font select-none'>{type}</span> </p>
-            <a href="">
-              <h1 className='title-font mt-1'>
-                {title}
+            <a href={url}>
+              <h1 className='title-font mt-1'> 
+                {title.split(/\s+/).filter((element) => { return element.length !== 0}).length > 15 ?title.slice(0,93) + "..." : title  }
               </h1>
             </a>
             <p className='description-font mt-6'>
-              {description}
+              {description.split(/\s+/).filter((element) => { return element.length !== 0}).length > 15 ?description.slice(0,110) + "..." : description  }
             </p>
           </div>
           <div className="bottoms flex flex-col">
