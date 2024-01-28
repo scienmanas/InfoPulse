@@ -3,7 +3,6 @@ import Navbar from './components/Navbar';
 import FrontView from './components/FrontView';
 import News from './components/News';
 import Footer from './components/Footer';
-import Loader from './components/Loader';
 
 import React, { Component } from 'react'
 
@@ -18,8 +17,7 @@ export default class App extends Component {
       <>
      <Navbar />
      <FrontView />
-     < News />
-     {/* <NewsItems /> */}
+     < News pageSize={10} country="in" category="sports"/>
      < Footer />
      </>
     )

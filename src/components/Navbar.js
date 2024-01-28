@@ -5,11 +5,24 @@ import logo from './assets/logo.png'
 
 export default class Navbar extends Component {
 
-// const [isMenuOpen, setIsMenuOpen] = useState("false")
 
-    // let toggleMenu = () => {
-
-    // };
+    handleClick() {
+        if (document.getElementById('navbar').classList.contains('hidden')) {
+            document.getElementById('navbar').classList.remove('hidden')
+            document.getElementById('navbar').classList.add('flex')
+            document.getElementById('line-1').classList.add('rotate-45')
+            document.getElementById('line-3').classList.add('opacity-0')
+            document.getElementById('line-2').classList.add('-rotate-45')
+            
+        }
+        else {
+            document.getElementById('navbar').classList.remove('flex')
+            document.getElementById('navbar').classList.add('hidden')
+            document.getElementById('line-1').classList.remove('rotate-45')
+            document.getElementById('line-3').classList.remove('opacity-0')
+            document.getElementById('line-2').classList.remove('-rotate-45')
+        }
+    }
 
     render() {
         return (
@@ -22,17 +35,17 @@ export default class Navbar extends Component {
                     />
                 </div>
                 <div className="flex right text-white w-fit h-fit items-center justify-center">
-                    <button className="hamburger sm:hidden cursor-pointer flex flex-col gap-y-1 items-center bg-slate-300 p-[9px] rounded-lg">
-                        <div className="line w-6 h-[2.5px] bg-slate-600"></div>
-                        <div className="line w-6 h-[2.5px] bg-slate-600"></div>
-                        <div className="line w-6 h-[2.5px] bg-slate-600"></div>
+                    <button className="hamburger sm:hidden cursor-pointer flex flex-col gap-y-1 items-center bg-slate-300 p-[9px] rounded-lg ease-in-out" onClick={this.handleClick}>
+                        <div className="line-1 w-6 h-[2.5px] bg-slate-600 duration-200"id='line-1'></div>
+                        <div className="line-2 w-6 h-[2.5px] bg-slate-600 duration-200" id='line-2'></div>
+                        <div className="line-3 w-6 h-[2.5px] bg-slate-600 duration-200" id='line-3'></div>
                     </button>
-                    <div className="navbar-items fixed top-4 left-4 p-5 sm:p-0 w-auto right-4 sm:static sm:bg-none bg-transparent bg-gradient-to-tr from-[#009245] to-[#FCEE21] rounded-lg flex flex-col sm:flex-row sm:w-fit shadow-xl sm:shadow-none hidden">
+                    <div className="navbar-items fixed sm:top-4 top-16 left-4 p-5 sm:p-0 w-auto right-4 sm:static sm:bg-none bg-transparent bg-gradient-to-tr from-[#009245] to-[#FCEE21] rounded-lg sm:flex flex-col sm:flex-row sm:w-fit shadow-xl sm:shadow-none hidden" id='navbar' >
                         {/* Hidden add above */}
-                        <div className="navigation text-[#4C4C4C] navbar-text-custom  sm:text-white w-fit flex sm:flex-row flex-col gap-x-5 gap-y-2 sm:w-fit h-fit items-center">
+                        <div className="navigation text-[#4C4C4C] navbar-text-custom  sm:text-white w-fit flex sm:flex-row flex-col gap-x-5 gap-y-2 sm:w-fit h-fit ">
                             <div className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1  home">Home</div>
-                            <div className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1  options2">Option</div>
-                            <div className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1  option-3">Option</div>
+                            <div className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1  options2">Region</div>
+                            <div className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1  option-3">Category</div>
                             <div className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1  Author">Author</div>
                             <div className="w-fit h-fit buttons items-center flex gap-3">
                             </div>
