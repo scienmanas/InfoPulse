@@ -5,8 +5,12 @@ export default class Spinner extends Component {
   render() {
   
     return (
-        <div className="w-full items-center justify-center">
-            <img src={spinner} alt="loading" />
+        <div className="w-full h-fit flex items-center justify-center">
+            <img 
+            className='w-20 h-20 my-6 mb-0 '
+            src={spinner} 
+            alt="loading"  
+            />
         </div>
     )
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { useState } from 'react'
+import { RiArrowDropDownLine } from "react-icons/ri";
 import './style/navbar.css'
 import logo from './assets/logo.png'
 
@@ -13,7 +14,7 @@ export default class Navbar extends Component {
             document.getElementById('line-1').classList.add('rotate-45')
             document.getElementById('line-3').classList.add('opacity-0')
             document.getElementById('line-2').classList.add('-rotate-45')
-            
+
         }
         else {
             document.getElementById('navbar').classList.remove('flex')
@@ -36,20 +37,46 @@ export default class Navbar extends Component {
                 </div>
                 <div className="flex right text-white w-fit h-fit items-center justify-center">
                     <button className="hamburger sm:hidden cursor-pointer flex flex-col gap-y-1 items-center bg-slate-300 p-[9px] rounded-lg ease-in-out" onClick={this.handleClick}>
-                        <div className="line-1 w-6 h-[2.5px] bg-slate-600 duration-200"id='line-1'></div>
+                        <div className="line-1 w-6 h-[2.5px] bg-slate-600 duration-200" id='line-1'></div>
                         <div className="line-2 w-6 h-[2.5px] bg-slate-600 duration-200" id='line-2'></div>
                         <div className="line-3 w-6 h-[2.5px] bg-slate-600 duration-200" id='line-3'></div>
                     </button>
                     <div className="navbar-items fixed sm:top-4 top-16 left-4 p-5 sm:p-0 w-auto right-4 sm:static sm:bg-none bg-transparent bg-gradient-to-tr from-[#009245] to-[#FCEE21] rounded-lg sm:flex flex-col sm:flex-row sm:w-fit shadow-xl sm:shadow-none hidden" id='navbar' >
                         {/* Hidden add above */}
-                        <div className="navigation text-[#4C4C4C] navbar-text-custom  sm:text-white w-fit flex sm:flex-row flex-col gap-x-5 gap-y-2 sm:w-fit h-fit ">
-                            <div className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1  home">Home</div>
-                            <div className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1  options2">Region</div>
-                            <div className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1  option-3">Category</div>
-                            <div className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1  Author">Author</div>
+                        <ul className="navigation text-[#4C4C4C] navbar-text-custom  sm:text-white w-fit flex sm:flex-row flex-col gap-x-2 gap-y-2 sm:w-fit h-fit ">
+                            <li className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1  home">
+                                <button className=''>
+                                    Home
+                                </button>
+                            </li>
+                            <li className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1 options2 flex items-center group">
+                                <button className=''>
+                                    India
+                                </button>
+                                <RiArrowDropDownLine />
+                                <ul className='hidden hover:flex absolute group-hover:flex active:flex flex-col top-4 navbar-text-custom'>
+                                    <li className="dropdownlist">US</li>
+                                    <li className="dropdownlist">Uk</li>
+                                    <li className="dropdownlist">Denmark</li>
+                                    <li className="dropdownlist">Germnay</li>
+                                    <li className="dropdownlist">Japan</li>
+                                </ul>
+                            </li>
+                            <li className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1 options2 flex items-center">
+                                <button className=''>
+                                    Sports
+                                </button>
+                                <RiArrowDropDownLine />
+                                
+                            </li>
+                            <li className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1  Author">
+                                <button>
+                                    Author
+                                </button>
+                            </li>
                             <div className="w-fit h-fit buttons items-center flex gap-3">
                             </div>
-                        </div>
+                        </ul>
                         <div className="buttons items-center px-3 flex flex-col sm:flex-row gap-4 mr-5 w-fit">
                             <div className="mode-button cursor-pointer w-fit h-fit text-white">
                                 <svg

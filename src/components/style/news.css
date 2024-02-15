@@ -7,5 +7,5 @@
 }
 
 .working-button {
-    @apply active:translate-x-1 active:translate-y-1 active:shadow-none duration-150;
+    @apply active:translate-x-1 active:translate-y-1 active:shadow-none duration-75;
 }

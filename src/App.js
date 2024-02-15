@@ -17,7 +17,7 @@ export default class App extends Component {
       <>
      <Navbar />
      <FrontView />
-     < News pageSize={10} country="in" category="sports"/>
+     {/* < News pageSize={10} country="in" category="sports"/> */}
      < Footer />
      </>
     )
