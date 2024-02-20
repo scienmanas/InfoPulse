@@ -16,7 +16,7 @@ export default class News extends Component {
       total_pages: 0,
       page: 1
     }
-    this.NEWS_API_KEY = process.env.REACT_APP_NEWS_API_KEY;
+    this.NEWS_API_KEY = process.env.REACT_APP_NEWS_API;
   }
 
   async componentDidMount() {
