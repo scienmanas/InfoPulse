@@ -16,10 +16,11 @@ export default class News extends Component {
       total_pages: 0,
       page: 1
     }
+    this.NEWS_API_KEY = process.env.REACT_APP_NEWS_API_KEY;
   }
 
   async componentDidMount() {
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&&category=${this.props.category}&apiKey=1fcc98de2abe4fcc8e7ac9c339b4c4f6&pageSize=${this.props.pageSize}&page=` + this.state.page;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&&category=${this.props.category}&apiKey=${this.NEWS_API_KEY}&pageSize=${this.props.pageSize}&page=` + this.state.page;
     this.setState({
       loading: true
     })
@@ -54,7 +55,7 @@ export default class News extends Component {
   async handleNextPage(event) {
     event.preventDefault();
 
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&&category=${this.props.category}&apiKey=1fcc98de2abe4fcc8e7ac9c339b4c4f6&pageSize=${this.props.pageSize}&page=` + (this.state.page + 1)
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&&category=${this.props.category}&apiKey=${this.NEWS_API_KEY}&pageSize=${this.props.pageSize}&page=` + (this.state.page + 1)
     this.setState({
       loading: true
     })
@@ -71,7 +72,7 @@ export default class News extends Component {
 
   async handlePreviousPage(event) {
     event.preventDefault();
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&&category=${this.props.category}&apiKey=1fcc98de2abe4fcc8e7ac9c339b4c4f6&pageSize=${this.props.pageSize}&page=` + (this.state.page - 1)
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&&category=${this.props.category}&apiKey=${this.NEWS_API_KEY}&pageSize=${this.props.pageSize}&page=` + (this.state.page - 1)
     this.setState({
       loading: true
     })
