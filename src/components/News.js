@@ -55,6 +55,7 @@ export default class News extends Component {
   async handleNextPage(event) {
     event.preventDefault();
 
+    
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&&category=${this.props.category}&apiKey=${this.NEWS_API_KEY}&pageSize=${this.props.pageSize}&page=` + (this.state.page + 1)
     this.setState({
       loading: true
@@ -68,6 +69,11 @@ export default class News extends Component {
         articles: parsedData.articles,
         loading: false
       })
+      
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      })
   }
 
   async handlePreviousPage(event) {
@@ -78,12 +84,17 @@ export default class News extends Component {
     })
     const response = await axios.get(url);
     const parsedData = response.data;
-
+    
     this.setState(
       {
         loading: false,
         page: this.state.page - 1,
         articles: parsedData.articles
+      })
+      
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
       })
   }
 
@@ -97,15 +108,17 @@ export default class News extends Component {
         </div>
         {this.state.loading && <Spinner />}
         <div className="buttons justify-center items-center flex gap-6">
-          <div className={`button shadow-[5px_5px_0px_0px_rgba(109,40,217)]  mt-4 lg:text-xl box-shado w-fit h-fit bg-gradient-to-r from-[#FFECD2] to-[#FCB69F] py-3 px-4 rounded-md cursor-pointer ${this.state.page === 1 ? 'disabled_button cursor-not-allowed' : 'working-button'} group`}>
-            <button className={`w-fit h-fit text-transparent bg-clip-text bg-gradient-to-r from-[#C33764] to-[#1D2671] font-bold ${this.state.page === 1 ? 'disabled_button cursor-not-allowed' : ''}`} onClick={this.handlePreviousPage} disabled={this.state.page === 1 ? true : false} >Previous</button>
-          </div>
-          <button
-            className={`button w-fit h-fit py-3 px-4 text-transparent bg-clip-border text-gray-200 bg-gradient-to-r from-[#C33764] to-[#1D2671] font-bold rounded-md cursor-pointer shadow-[5px_5px_0px_0px_rgba(109,40,217)] mt-4 lg:text-xl box-shado group ${this.state.page < this.state.total_pages ? 'working-button' : 'disabled_button cursor-not-allowed'}`}
+          <button className={`transition-all duration-200 button button-text shadow-[5px_5px_0px_0px_rgba(109,40,217)]  mt-4 lg:text-xl box-shado w-fit h-fit bg-gradient-to-r from-[#FFECD2] to-[#FCB69F] py-4 px-5 rounded-md ${this.state.page === 1 ? 'disabled_button cursor-not-allowed opacity-60' : 'active:translate-x-1 active:translate-y-1 active:shadow-none'}`} onClick={this.handlePreviousPage} disabled={this.state.page === 1 ? true : false}>
+            <div className="w-fit h-fit text-transparent bg-clip-text bg-gradient-to-r from-[#C33764] to-[#1D2671] font-bold">
+              <span className="select-none">Previous</span>
+            </div>
+          </button>
+          <button className={`transition-all duration-200 button button-text shadow-[5px_5px_0px_0px_rgba(109,40,217)]  mt-4 lg:text-xl box-shado w-fit h-fit bg-gradient-to-r from-[#FFECD2] to-[#FCB69F] py-4 px-5 rounded-md ${this.state.page < this.state.total_pages ? 'working-button' : 'disabled_button cursor-not-allowed'}`}
             onClick={this.handleNextPage}
-            disabled={this.state.page < this.state.total_pages ? false : true}
-          >
-            Next
+            disabled={this.state.page < this.state.total_pages ? false : true}>
+            <div className="w-fit h-fit text-transparent bg-clip-text bg-gradient-to-r from-[#C33764] to-[#1D2671] font-bold">
+              <span className="select-none">Next</span>
+            </div>
           </button>
 
         </div>
