@@ -3,8 +3,21 @@ import { useState } from 'react'
 import { RiArrowDropDownLine } from "react-icons/ri";
 import './style/navbar.css'
 import logo from './assets/logo.png'
+import { type } from '@testing-library/user-event/dist/type';
 
 export default class Navbar extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            mode: 'light',
+            country: 'India',
+            type: 'sports'
+        }
+        this.countriesList = ['India', 'USA', 'UK', 'Australia', 'Canada',]
+        this.typesList = ['sports', 'business', 'entertainment', 'general'];
+        this.countryCodes = ['in', 'us', 'gb', 'au', 'ca'];
+    }
 
 
     handleClick() {
@@ -49,30 +62,55 @@ export default class Navbar extends Component {
                                     Home
                                 </button>
                             </li>
-                            <li className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1 options2 flex items-center group">
+                            <li className="cursor-pointer sm:text-slate-400 w-fit h-fit duration-150 rounded-[4px] px-3 py-1 flex items-center group">
                                 <button className=''>
-                                    India
+                                    {this.state.country}
                                 </button>
-                                <RiArrowDropDownLine />
-                                <ul className='hidden hover:flex absolute group-hover:flex active:flex flex-col top-4 navbar-text-custom'>
-                                    <li className="dropdownlist">US</li>
-                                    <li className="dropdownlist">Uk</li>
-                                    <li className="dropdownlist">Denmark</li>
-                                    <li className="dropdownlist">Germnay</li>
-                                    <li className="dropdownlist">Japan</li>
+                                <RiArrowDropDownLine
+                                    className='-rotate-180 duration-200 group-hover:rotate-0'
+                                />
+                                <ul className='hidden hover:flex absolute group-hover:flex active:flex flex-col gap-1 top-[3.2rem] navbar-text-custom'>
+                                    {
+                                        this.countriesList.map((country, index) => {
+                                            if (country !== this.state.country) {
+                                                return <li key={index} className="h-fit w-fit" onClick={() => {
+                                                    this.setState({
+                                                        country: country
+                                                    })
+                                                }}>
+                                                    {country}
+                                                </li>
+                                            }
+                                        })
+                                    }
                                 </ul>
                             </li>
-                            <li className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1 options2 flex items-center">
+                            <li className="cursor-pointer sm:text-slate-400 w-fit h-fit rounded-[4px] px-3 py-1 options2 flex items-center group">
                                 <button className=''>
-                                    Sports
+                                    {this.state.type}
                                 </button>
-                                <RiArrowDropDownLine />
-                                
+                                <RiArrowDropDownLine
+                                    className='-rotate-180 duration-200 group-hover:rotate-0'
+                                />
+                                <ul className='hidden hover:flex absolute group-hover:flex active:flex flex-col gap-1 top-[3.2rem] navbar-text-custom'>
+                                    {
+                                        this.typesList.map((type, index) => {
+                                            if (type !== this.state.type) {
+                                                return <li key={index} className="h-fit w-fit" onClick={() => {
+                                                    this.setState({
+                                                        type: type
+                                                    })
+                                                }}>
+                                                    {type}
+                                                </li>
+                                            }
+                                        })
+                                    }
+                                </ul>
+
                             </li>
                             <li className="cursor-pointer sm:text-slate-400 sm:hover:text-slate-100 hover:text-[#3a3a3a] w-fit h-fit active:border-[#FFD700] border-[1px] border-dashed hover:scale-110 duration-150 active:scale-90 border-transparent rounded-[4px] px-3 py-1  Author">
-                                <button>
                                     Author
-                                </button>
                             </li>
                             <div className="w-fit h-fit buttons items-center flex gap-3">
                             </div>
