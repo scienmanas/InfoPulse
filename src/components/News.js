@@ -14,13 +14,35 @@ export default class News extends Component {
       articles: [],
       loading: false,
       total_pages: 0,
-      page: 1
+      page: 1,
+      country: 'in',
+      category: 'general',
     }
     this.NEWS_API_KEY = process.env.REACT_APP_NEWS_API;
   }
 
+  async fetchData() {
+    const { country, category, page } = this.state;
+    const url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${this.NEWS_API_KEY}&pageSize=${this.props.pageSize}&page=${page}`;
+
+    this.setState({ loading: true });
+    try {
+      const response = await this.axios.get(url);
+      const { articles, totalResults } = response.data;
+
+      this.setState({
+        articles,
+        loading: false,
+        total_pages: Math.ceil(totalResults / 20),
+      });
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      this.setState({ loading: false });
+    }
+  }
+
   async componentDidMount() {
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&&category=${this.props.category}&apiKey=${this.NEWS_API_KEY}&pageSize=${this.props.pageSize}&page=` + this.state.page;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.state.country}&&category=${this.state.category}&apiKey=${this.NEWS_API_KEY}&pageSize=${this.props.pageSize}&page=` + this.state.page;
     this.setState({
       loading: true
     })
@@ -51,12 +73,25 @@ export default class News extends Component {
       return 'Invalid Date';
     }
   }
+  handleCategoryChange = async (category) => {
+    await this.setState({
+      category: category,
+    });
+    await this.fetchData();
+  };
+
+  handleCountryChange = async (country) => {
+    await this.setState({
+      country: country,
+    });
+    await this.fetchData();
+  };
 
   async handleNextPage(event) {
-    event.preventDefault();
 
+    event.preventDefault();
     
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&&category=${this.props.category}&apiKey=${this.NEWS_API_KEY}&pageSize=${this.props.pageSize}&page=` + (this.state.page + 1)
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.state.country}&&category=${this.state.category}&apiKey=${this.NEWS_API_KEY}&pageSize=${this.props.pageSize}&page=` + (this.state.page + 1)
     this.setState({
       loading: true
     })
@@ -78,7 +113,7 @@ export default class News extends Component {
 
   async handlePreviousPage(event) {
     event.preventDefault();
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&&category=${this.props.category}&apiKey=${this.NEWS_API_KEY}&pageSize=${this.props.pageSize}&page=` + (this.state.page - 1)
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.state.country}&&category=${this.state.category}&apiKey=${this.NEWS_API_KEY}&pageSize=${this.props.pageSize}&page=` + (this.state.page - 1)
     this.setState({
       loading: true
     })
@@ -103,7 +138,7 @@ export default class News extends Component {
       <div className='all-news flex flex-col mb-7'>
         <div className="news-cards flex flex-wrap flex-row justify-evenly gap-4 p-5">
           {!this.state.loading && this.state.articles.map((element) => {
-            return < NewsItems title={element.title} description={element.description ? element.description : ""} type={`${this.props.category} - News`} imgUrl={element.urlToImage ? element.urlToImage : default_img} url={element.url} author={element.source.name} date={this.formatDate(element.publishedAt)} />
+            return < NewsItems title={element.title} description={element.description ? element.description : ""} type={`${this.props.category} - News`} imgUrl={element.urlToImage ? element.urlToImage : default_img} url={element.url} author={element.source.name} date={this.formatDate(element.publishedAt)} handleCategoryChange={this.handleCategoryChange} handleCountryChange={this.handleCountryChange} />
           })}
         </div>
         {this.state.loading && <Spinner />}

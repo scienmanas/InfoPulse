@@ -12,10 +12,12 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      mode: 'light'
+      mode: 'light',
+      countryCode: 'in',
+      category: 'sports'
     }
   }
-  
+
 
   componentDidMount() {
     document.body.style.backgroundColor = '#f5f5f2';
@@ -39,11 +41,13 @@ export default class App extends Component {
   render() {
     return (
       <>
-     <Navbar />
-     <FrontView />
-     < News pageSize={10} country="in" category="sports" mode={this.state.mode} handleMode={this.handleToggleMode}/>
-     < Footer />
-     </>
+        <Navbar countryCode={this.state.countryCode} category={this.state.category} />
+        <FrontView />
+        {console.log(this.state.countryCode)}
+        {console.log(this.state.category)}
+        < News pageSize={10} country={this.state.countryCode} category={this.state.category} mode={this.state.mode} handleMode={this.handleToggleMode} />
+        < Footer />
+      </>
     )
   }
 }
