@@ -1,6 +1,6 @@
 # InfoPulse
 
-I news app built by usng the NewsAPI. The app is built using React and Tailwind. 
+I news app built by usng the NewsAPI. The app is built using React and Tailwind.
 
 ## Installation
 
