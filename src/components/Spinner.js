@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import spinner from './assets/Reload-0.5s-200px.gif'
 
-export default class Spinner extends Component {
-  render() {
-  
+const Spinner = () => {
     return (
         <div className="w-full h-fit flex items-center justify-center">
             <img 
@@ -13,5 +11,6 @@ export default class Spinner extends Component {
             />
         </div>
     )
-  }
 }
+
+export default Spinner;

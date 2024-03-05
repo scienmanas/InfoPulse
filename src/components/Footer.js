@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { useState } from 'react'
 import { FiFacebook, FiTwitter } from "react-icons/fi";
 import { CiLinkedin } from "react-icons/ci";
 import { FaInstagram } from "react-icons/fa";
@@ -8,34 +9,32 @@ import './style/footer.css';
 import footer_img_1 from './assets/footer-1.png'
 import logo from './assets/logo.png'
 
-export default class Footer extends Component {
 
-    constructor() {
-        super();
-        this.state = {
-            email: '',
-            message: ''
-        }
-        this.templet_id = process.env.REACT_APP_EMAIL_JS_TEMAPLATE_ID;
-        this.public_key = process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY;
-        this.service_id = process.env.REACT_APP_EMAIL_JS_SERVICE_ID;
-    }
+export default function Footer()  {
 
-    validateEmail = (email) => {
+    const templet_id = process.env.REACT_APP_EMAIL_JS_TEMAPLATE_ID;
+    const public_key = process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY;
+    const service_id = process.env.REACT_APP_EMAIL_JS_SERVICE_ID;
+    
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+        
+
+    const validateEmail = (email) => {
         const re = /\S+@\S+\.\S+/;
         return re.test(email);
     }
 
-    handleSubmit = (event) => {
+    const handleSubmit = (event) => {
 
-        if (!this.validateEmail(this.state.email)) {
+        if (!validateEmail(email)) {
             document.querySelector('.email-error').classList.remove('hidden');
             return;
         } else {
             document.querySelector('.email-error').classList.add('hidden');
         }
 
-        if (this.state.message.trim() === '') {
+        if (message.trim() === '') {
             document.querySelector('.message-error').classList.remove('hidden');
             return;
         }
@@ -46,27 +45,24 @@ export default class Footer extends Component {
         event.preventDefault();
 
         const template_params = {
-            from: this.state.email,
+            from: email,
             date: "Today",
             time: "!2 am",
-            message: this.state.message
+            message: message
         }
 
 
-        emailjs.send(this.service_id, this.templet_id, template_params, this.public_key)
+        emailjs.send(service_id, templet_id, template_params, public_key)
             .then((result) => {
                 alert("Feedback sent successfully");
-                this.setState({
-                    email: '',
-                    message: ''
-                })
+                setEmail('');
+                setMessage('');
             }, (error) => {
                 alert("Failed to send feedback");
                 console.log(error.text);
             });
     }
 
-    render() {
         return (
             <div className='static fotter bg-gradient-to-tr p-9 pt-14 w-full h-fit from-[#1a1a1a] to-gray-700 rounded-sm flex flex-col gap-16'>
                 <div className="content-1 flex justify-around flex-wrap items-center gap-6 w-full h-fit">
@@ -84,8 +80,8 @@ export default class Footer extends Component {
                                         type="email"
                                         placeholder='Email'
                                         className='bg-transparent border-b-2 border-gray-400 sm:w-80 w-72 h-10 outline-none text-white focus:border-blue-500'
-                                        value={this.state.email}
-                                        onChange={(event) => this.setState({ email: event.target.value })}
+                                        value={email}
+                                        onChange={(event) => setEmail({ email: event.target.value })}
                                     />
                                 </div>
                                 <div className="email-error absolute hidden bg-yellow-100 rounded-md px-4 py-2 mt-[5.5rem] shadow-md">
@@ -96,8 +92,8 @@ export default class Footer extends Component {
                             </div>
                             <div className="message-entry">
                                 <textarea
-                                    onChange={(event) => this.setState({ message: event.target.value })}
-                                    value={this.state.message}
+                                    onChange={(event) => setMessage(event.target.value)}
+                                    value={message}
                                     name=""
                                     id=""
                                     cols="30"
@@ -112,7 +108,7 @@ export default class Footer extends Component {
                             </div>
                             <div className="button place-self-center">
                                 <button
-                                    onClick={this.handleSubmit}
+                                    onClick={handleSubmit}
                                     className='bg-[#d36868] w-fit h-fit py-4 px-8 rounded-md flex justify-center items-center gap-2 text-white font-bold text-lg hover:bg-[#FFA0A0] transition-all duration-200'>
                                     <span className='text-black'>Send</span>
                                 </button>
@@ -169,4 +165,3 @@ export default class Footer extends Component {
             </div>
         )
     }
-}
