@@ -8,6 +8,17 @@ router.get('/get-news', async (req, res) => {
 
     // get the query from body
     const { category } = req.body;
+
+    // Get pagination query paramaters
+    const page = parseInt(req.query.page) || 1;
+    const limit = Math.max(parseInt(req.query.limit), 25);
+    const skip = (page - 1) * limit
+
+    console.log(page)
+    console.log(limit)
+    console.log(skip)
+
+    // configure the filter
     let filter = {}
     if (category) {
         filter = {
@@ -17,11 +28,10 @@ router.get('/get-news', async (req, res) => {
 
     try {
         // return the sorted data with latest date on top
-        const news = await News.find(filter).sort(
-            {
-                date: -1
-            }
-        );
+        const news = await News.find(filter)
+            .sort({ date: -1 })
+            .skip(skip)
+            .limit(limit);
 
         res.status(200).json(news);
 
