@@ -18,7 +18,7 @@ export default class News extends Component {
       country: 'in',
       category: 'general',
     }
-    this.NEWS_API_KEY = process.env.REACT_APP_NEWS_API;
+    this.NEWS_API_KEY = "1fcc98de2abe4fcc8e7ac9c339b4c4f6";
   }
 
   async fetchData() {
