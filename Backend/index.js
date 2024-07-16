@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { connectToDB } from './config/db.js';
 import { config } from 'dotenv';
+import { scheduleCronJobs } from './scripts/update-data.js';
 // Rouest import
 import serviceRoute from './routes/service.js';
 import fetchDataRoute from './routes/data.js';
@@ -39,6 +40,9 @@ app.get('/', (req, res, next) => {
     });
 });
 
+
+// Cron jobs
+scheduleCronJobs();
 
 app.listen(port, () => {
     console.log(`Dev active on http://localhost:${port}`)

@@ -11,12 +11,8 @@ router.get('/get-news', async (req, res) => {
 
     // Get pagination query paramaters
     const page = parseInt(req.query.page) || 1;
-    const limit = Math.max(parseInt(req.query.limit), 25);
+    const limit = Math.min(parseInt(req.query.limit), 25) || 25;
     const skip = (page - 1) * limit
-
-    console.log(page)
-    console.log(limit)
-    console.log(skip)
 
     // configure the filter
     let filter = {}
@@ -33,7 +29,15 @@ router.get('/get-news', async (req, res) => {
             .skip(skip)
             .limit(limit);
 
-        res.status(200).json(news);
+        // count total number of entries
+        const total = await News.countDocuments(filter);
+
+        res.status(200).json({
+            page : page,
+            total_pages: Math.ceil(total/limit),
+            total_items: total,
+            news: news
+        });
 
     } catch (error) {
         console.log(error);
