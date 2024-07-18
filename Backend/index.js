@@ -29,8 +29,8 @@ const corsConfiguration = {
 app.use(cors(corsConfiguration));
 
 //  Routes
-app.use('/service', serviceRoute)
-app.use('/data', fetchDataRoute)
+app.use('/api/service', serviceRoute)
+app.use('/api/data', fetchDataRoute)
 
 
 // Home page
@@ -42,7 +42,8 @@ app.get('/', (req, res, next) => {
 
 
 // Cron jobs
-scheduleCronJobs();
+// console.log("Cron Job Activates :)")
+// scheduleCronJobs();
 
 app.listen(port, () => {
     console.log(`Dev active on http://localhost:${port}`)

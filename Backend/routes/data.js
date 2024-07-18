@@ -49,7 +49,7 @@ router.get('/get-news', async (req, res) => {
 router.post('/store-news', async (req, res) => {
 
     // get the data from body
-    const { headline, description, category, publisher, image_link, news_link } = req.body;
+    const { headline, description, category, country, publisher, image_link, news_link } = req.body;
 
     try {
 
@@ -58,6 +58,7 @@ router.post('/store-news', async (req, res) => {
             headline: headline,
             description: description,
             category: category,
+            country: country,
             publisher: publisher,
             image_link: image_link,
             news_link: news_link
