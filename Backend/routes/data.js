@@ -7,9 +7,8 @@ const router = express.Router()
 router.get('/get-news', async (req, res) => {
 
     // get the query from body
-    const { category } = req.body;
-
     // Get pagination query paramaters
+    const category = req.query.category
     const page = parseInt(req.query.page) || 1;
     const limit = Math.min(parseInt(req.query.limit), 25) || 25;
     const skip = (page - 1) * limit
@@ -33,8 +32,8 @@ router.get('/get-news', async (req, res) => {
         const total = await News.countDocuments(filter);
 
         res.status(200).json({
-            page : page,
-            total_pages: Math.ceil(total/limit),
+            page: page,
+            total_pages: Math.ceil(total / limit),
             total_items: total,
             news: news
         });

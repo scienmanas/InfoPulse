@@ -21,7 +21,7 @@ await connectToDB();
 
 // Configure CORS
 const corsConfiguration = {
-    origin: ["*"],
+    origin: ["http://localhost:3000"],
     optionSucessStatus: 200
 }
 

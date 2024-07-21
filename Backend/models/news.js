@@ -8,8 +8,8 @@ const newsItemSchema = mongoose.Schema(
         country: {type: String, required: true},
         publisher: { type: String },
         date: { type: String, required: true, default: Date.now },
-        image_link: { type: String },
-        news_link: { type: String, required: true }
+        image_link: { type: String , unique:true },
+        news_link: { type: String, required: true, unique: true }
     },
     {
         collection: "news"

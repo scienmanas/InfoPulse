@@ -6,8 +6,7 @@ const router = express.Router()
 router.post('/send-email', async (req, res) => {
 
     // Get the body data
-    const { toName, toEmail, subject, message } = req.body;
-    console.log(req.body)
+    const { toName="", toEmail, subject, message } = req.body;
 
     try {
 
@@ -29,13 +28,11 @@ router.post('/send-email', async (req, res) => {
             to: `${toName} <${toEmail}>`,
             subject: subject,
             text: message,
-            bcc: "Manas <iamscientistmanas@gmail.com>"
         })
 
         res.status(200).json({
             message: "Successfully emailed"
         })
-        console.log(info)
     }
     catch (error) {
         console.log(error);
