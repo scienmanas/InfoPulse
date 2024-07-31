@@ -42,8 +42,8 @@ app.get('/', (req, res, next) => {
 
 
 // Cron jobs
-// console.log("Cron Job Activates :)")
-// scheduleCronJobs();
+console.log("Cron Job Activates :)")
+scheduleCronJobs();
 
 app.listen(port, () => {
     console.log(`Active on port: ${port}`)
