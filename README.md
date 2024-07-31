@@ -2,14 +2,15 @@
 
 # 🔰 InfoPulse
 
-A news app having built on Next Js, having backend and frontend separate. It has cron-job enabled to fetch news and store it in database.
+- A news app having built on Next Js, having backend and frontend separate. It has cron-job enabled to fetch news and store it in database.
+
+- Backend deployed on `render.com` and [frontend](https://info-pulse-six.vercel.app/) on `vercel` under free tier.
 
 ## 📚 Tech Stack
 
-**Client:** Next, TailwindCSS
-
-**Server:** Node, Express
-**Datebase:** Mongo DB
+- **Client:** Next JS, TailwindCSS
+- **Server:** Node, Express
+- **Datebase:** Mongo DB
 
 ## 📦 API Reference, Routes & Misc
 
@@ -22,7 +23,7 @@ A news app having built on Next Js, having backend and frontend separate. It has
 - This project also has a `cron-job` which runs every `20 minutes` to add new data to database. This may be commmented while on development mode (suggested).
 - `Vercel Analytics` is also enabled for this web app
 
-## 🔩  Environment Variables
+## 🔩 Environment Variables
 
 This project requirement .env configuration in `Backend` as well in `Frontend` folder.
 
@@ -38,9 +39,9 @@ This project requirement .env configuration in `Backend` as well in `Frontend` f
 
 ### Frontend
 
-| Varibale         | Description                    |
-| :--------------- | :----------------------------- |
-| `SITE_URL`       | Site URL                       |
+| Varibale   | Description |
+| :--------- | :---------- |
+| `SITE_URL` | Site URL    |
 
 ## 🔨 Setting Up
 
@@ -66,7 +67,7 @@ Follow the following instruction to setup the project and run locally
 │   │   └── db.js
 │   │── models
 │   │   └── news.js
-│   │── routes 
+│   │── routes
 │   │   ├── data.css
 │   │   └── service.css
 │   │── scripts
@@ -116,7 +117,10 @@ Follow the following instruction to setup the project and run locally
 
 ## 🔥 Contributing
 
-Contributions are always welcome!. You can contribute by raising bugs or adding a new features. Currently, we are working on implementing differenting language support. Additionally you can contact me by my email: **iamscientistmanas@gmail.com**
+Contributions are always welcome! Additionally you can contact me by my email: **iamscientistmanas@gmail.com**. Some features which are developmemt and contributions can be made are:
+
+- [] Path with password (in .env) and a cron job associated to it to delete the old news after a certain time intervals also in other endpoints too.
+- [] Support for different languages.
 
 ## 📷 Screenshots
 
