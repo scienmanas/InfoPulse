@@ -2,7 +2,7 @@ import cron from 'node-cron';
 
 export const scheduleCronJobs = () => {
 
-    cron.schedule('0 20 * * * *', async () => {
+    cron.schedule('* * * * * *', async () => {
 
         // get ap-key
         const API_KEY = process.env.G_NEWS_API_KEY;

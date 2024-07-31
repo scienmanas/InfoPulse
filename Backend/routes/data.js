@@ -9,17 +9,16 @@ router.get('/get-news', async (req, res) => {
     // get the query from body
     // Get pagination query paramaters
     const category = req.query.category
+    const country = req.query.country;
     const page = parseInt(req.query.page) || 1;
     const limit = Math.min(parseInt(req.query.limit), 25) || 25;
     const skip = (page - 1) * limit
 
     // configure the filter
-    let filter = {}
-    if (category) {
-        filter = {
-            category: category
-        }
-    }
+    const filter = {
+        ...(category && { category }),
+        ...(country && { country }),
+    };
 
     try {
         // return the sorted data with latest date on top
@@ -35,6 +34,7 @@ router.get('/get-news', async (req, res) => {
             page: page,
             total_pages: Math.ceil(total / limit),
             total_items: total,
+            limit: limit,
             news: news
         });
 
