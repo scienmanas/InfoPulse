@@ -8,7 +8,7 @@ export const scheduleCronJobs = () => {
         const API_KEY = process.env.G_NEWS_API_KEY;
 
         // POST URL
-        const POST_URL = 'http://localhost:5000/api/data/store-news'
+        const POST_URL = 'https://infopulse.onrender.com/api/data/store-news'
 
         // define countries and get random choices
         const countries = ['in', 'br', 'ca', 'fr', 'ie', 'us'];

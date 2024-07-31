@@ -46,5 +46,5 @@ app.get('/', (req, res, next) => {
 // scheduleCronJobs();
 
 app.listen(port, () => {
-    console.log(`Dev active on http://localhost:${port}`)
+    console.log(`Active on port: ${port}`)
 })
