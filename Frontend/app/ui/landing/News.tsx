@@ -61,7 +61,7 @@ export function News(): JSX.Element {
     setIsFetching(true);
 
     // api endpount
-    const API_URI = `http://localhost:5000/api/data/get-news?category=${configuration.category}&page=${page}&limit=${configuration.limit}&country=${configuration.country}`;
+    const API_URI = `https://infopulse.onrender.com/api/data/get-news?category=${configuration.category}&page=${page}&limit=${configuration.limit}&country=${configuration.country}`;
 
     // Hit the endpoint
     const res = await fetch(API_URI, {
@@ -75,7 +75,7 @@ export function News(): JSX.Element {
     if (res.status === 200) {
       // parse the data
       const data = await res.json();
-      if (data.news.length == 0) {
+      if (data.total_pages <= page) {
         setAllItemsFetched(true);
         setIsFetching(false);
         return;
@@ -100,6 +100,7 @@ export function News(): JSX.Element {
   useEffect(() => {
     setPage(1);
     setNewsData([]);
+    setAllItemsFetched(false);
     fetchData();
   }, [configuration]);
 
@@ -110,8 +111,8 @@ export function News(): JSX.Element {
   );
 
   return (
-    <div className="all-news flex flex-col gap-2">
-      <div className="options-and-filter px-10 py-2 flex flex-row gap-4">
+    <div id="news" className="all-news flex flex-col gap-2">
+      <div className="options-and-filter px-10 py-2 flex flex-row gap-4 w-fit">
         <div className="news-category">
           <select
             className="rounded-lg p-2 border-[2px] border-blue-400 bg-gray-200 font-semibold  hover:border-yellow-600"
@@ -168,7 +169,10 @@ export function News(): JSX.Element {
             />
           );
         })}
-        <div ref={lastElementRef} />
+        <div
+          ref={lastElementRef}
+          className={`${allItemsFetched ? "hidden" : ""}`}
+        />
       </div>
       <div className="buttons justify-center items-center flex gap-6">
         {isFetching && <FetchNewsLoader />}

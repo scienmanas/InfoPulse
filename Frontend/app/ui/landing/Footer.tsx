@@ -30,7 +30,7 @@ export function Footer(): JSX.Element {
     const message: string = formData.get("message") as string;
 
     // Submit form
-    const POST_API_URI = "http://localhost:5000/api/service/send-email";
+    const POST_API_URI = "https://infopulse.onrender.com/api/service/send-email";
 
     try {
       // Send message to creator
@@ -84,7 +84,7 @@ export function Footer(): JSX.Element {
   };
 
   return (
-    <div className="static fotter bg-gradient-to-tr p-9 pt-14 w-full h-fit from-[#1a1a1a] to-gray-700 rounded-sm flex flex-col gap-16">
+    <footer className="static fotter bg-gradient-to-tr p-9 pt-14 w-full h-fit from-[#1a1a1a] to-gray-700 rounded-sm flex flex-col gap-16">
       <div className="content flex justify-around flex-wrap items-center gap-6 w-full h-fit">
         <div className="texts flex flex-col gap-4 w-fit h-fit">
           <p className="text select-none text-green-500 w-fit h-fit">
@@ -94,11 +94,12 @@ export function Footer(): JSX.Element {
             Start using News Monkey Today <span className="font-mono">!</span>
           </p>
           <form
+            id="contact"
             onSubmit={handleFormSubmission}
             className="user-message-submit items-center flex flex-wrap flex-col gap-12 mt-2"
           >
             <input
-            disabled={isSubmitted}
+              disabled={isSubmitted}
               required
               type="email"
               placeholder="Email"
@@ -116,9 +117,13 @@ export function Footer(): JSX.Element {
             ></textarea>
 
             <button
-            disabled={isSubmitted}
+              disabled={isSubmitted}
               type="submit"
-              className={`bg-[#d36868] w-[7.7rem] h-fit py-4 px-6 rounded-md flex justify-center items-center gap-2 text-white font-bold text-lg  transition-all duration-200 ${isSubmitted ? 'opacity-60 cursor-not-allowed': 'hover:bg-[#d73434]' }`}
+              className={`bg-[#d36868] w-[7.7rem] h-fit py-4 px-6 rounded-md flex justify-center items-center gap-2 text-white font-bold text-lg  transition-all duration-200 ${
+                isSubmitted
+                  ? "opacity-60 cursor-not-allowed"
+                  : "hover:bg-[#d73434]"
+              }`}
             >
               {isSubmitted ? <span>Sent 😊</span> : <span>Send</span>}
 
@@ -214,6 +219,6 @@ export function Footer(): JSX.Element {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }

@@ -1,8 +1,63 @@
-import Link from "next/link"
-import Image from "next/image"
+"use client";
 
-export function Navbar (): JSX.Element {
-    return (
-        <div>hello</div>
-    )
+import Link from "next/link";
+import Image from "next/image";
+import logo from "@/public/assets/logo/logo.png";
+import { FiGithub } from "react-icons/fi";
+
+export function Navbar(): JSX.Element {
+  const repoLink: string = "https://github.com/scienmanas/InfoPulse";
+
+  return (
+    <div className="relative nav-wrapper w-fit flex items-center m-4 gap-5 lg:gap-10 border-2 rounded-2xl px-7 py-3 bg-[#27223b] border-yellow-500">
+      <div className="logo w-fit h-fit">
+        <Image src={logo} width={60} height={60} alt="logo" />
+      </div>
+      <div className="links-nav">
+        <ul className="text-white flex flex-row gap-5 lg:gap-10 items-center font-semibold">
+          <li className="select-none hover:scale-110 active:scale-95 duration-200">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .getElementById("home")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              Home
+            </button>
+          </li>
+          <li className="select-none hover:scale-110 active:scale-95 duration-200">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .getElementById("news")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              News
+            </button>
+          </li>
+          <li className="select-none hover:scale-110 active:scale-95 duration-200">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              Contact
+            </button>
+          </li>
+          <Link href={repoLink}>
+            <li className="select-none hover:scale-110 active:scale-95 duration-200">
+              <FiGithub />
+            </li>
+          </Link>
+        </ul>
+      </div>
+    </div>
+  );
 }

@@ -16,7 +16,7 @@ export function NewsCard({
   news_link,
 }: NewsCardProps): JSX.Element {
   const dispDate = new Date(parseInt(date, 10));
-  const options = {
+  const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
     month: "short",
     day: "numeric",
