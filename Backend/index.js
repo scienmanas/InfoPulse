@@ -21,7 +21,7 @@ await connectToDB();
 
 // Configure CORS
 const corsConfiguration = {
-    origin: ["http://localhost:3000"],
+    origin: ["https://info-pulse-six.vercel.app/"],
     optionSucessStatus: 200
 }
 
