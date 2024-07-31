@@ -84,7 +84,7 @@ export function Footer(): JSX.Element {
   };
 
   return (
-    <footer className="static fotter bg-gradient-to-tr p-9 pt-14 w-full h-fit from-[#1a1a1a] to-gray-700 rounded-sm flex flex-col gap-16">
+    <footer className="static fotter bg-gradient-to-tr sm:p-9 py-9 px-5 pt-14 sm:py-9 w-full h-fit from-[#1a1a1a] to-gray-700 rounded-sm flex flex-col gap-16">
       <div className="content flex justify-around flex-wrap items-center gap-6 w-full h-fit">
         <div className="texts flex flex-col gap-4 w-fit h-fit">
           <p className="text select-none text-green-500 w-fit h-fit">

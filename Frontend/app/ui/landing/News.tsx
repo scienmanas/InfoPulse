@@ -112,46 +112,48 @@ export function News(): JSX.Element {
 
   return (
     <div id="news" className="all-news flex flex-col gap-2">
-      <div className="options-and-filter px-10 py-2 flex flex-row gap-4 w-fit">
-        <div className="news-category">
-          <select
-            className="rounded-lg p-2 border-[2px] border-blue-400 bg-gray-200 font-semibold  hover:border-yellow-600"
-            defaultValue={`world`}
-            onChange={async (e) => {
-              const target = e.target as HTMLSelectElement;
-              // update the state
-              setConfiguration((prev) => ({
-                ...prev,
-                category: target.value,
-              }));
-            }}
-          >
-            {categoryList.map((category) => (
-              <option value={category} key={category}>
-                {category.charAt(0).toUpperCase() + category.slice(1)}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="news-country">
-          <select
-            className="rounded-lg p-2 border-[2px] border-blue-400 bg-gray-200 font-semibold  hover:border-yellow-600"
-            defaultValue={`in`}
-            onChange={(e) => {
-              const target = e.target as HTMLSelectElement;
-              // update the state
-              setConfiguration((prev) => ({
-                ...prev,
-                country: target.value,
-              }));
-            }}
-          >
-            {countriesList.map((countryData) => (
-              <option value={countryData.code} key={countryData.code}>
-                {countryData.country}
-              </option>
-            ))}
-          </select>
+      <div className="options-and-filter sm:px-10 sm:py-2 flex flex-row w-full items-center justify-center sm:justify-start">
+        <div className="option-warpper flex flex-row w-fit gap-4">
+          <div className="news-category">
+            <select
+              className="rounded-lg p-2 border-[2px] border-blue-400 bg-gray-200 font-semibold  hover:border-yellow-600"
+              defaultValue={`world`}
+              onChange={async (e) => {
+                const target = e.target as HTMLSelectElement;
+                // update the state
+                setConfiguration((prev) => ({
+                  ...prev,
+                  category: target.value,
+                }));
+              }}
+            >
+              {categoryList.map((category) => (
+                <option value={category} key={category}>
+                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="news-country">
+            <select
+              className="rounded-lg p-2 border-[2px] border-blue-400 bg-gray-200 font-semibold  hover:border-yellow-600"
+              defaultValue={`in`}
+              onChange={(e) => {
+                const target = e.target as HTMLSelectElement;
+                // update the state
+                setConfiguration((prev) => ({
+                  ...prev,
+                  country: target.value,
+                }));
+              }}
+            >
+              {countriesList.map((countryData) => (
+                <option value={countryData.code} key={countryData.code}>
+                  {countryData.country}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
       <div className="news-cards flex flex-wrap flex-row justify-evenly gap-4 p-5">
@@ -174,7 +176,7 @@ export function News(): JSX.Element {
           className={`${allItemsFetched ? "hidden" : ""}`}
         />
       </div>
-      <div className="buttons justify-center items-center flex gap-6">
+      <div className="loader justify-center items-center flex w-full">
         {isFetching && <FetchNewsLoader />}
       </div>
     </div>
