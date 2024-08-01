@@ -100,13 +100,12 @@ Follow the following instruction to setup the project and run locally
 │   │   │   │    ├── Navbar.tsx
 │   │   │   │    └── News.tsx
 │   │   │   └── loaders.tsx
-│   │   ├── error.ts
+│   │   ├── error.tss
 │   │   ├── favicon.ico
 │   │   ├── global.css
 │   │   ├── page.tsx
 │   │   ├── layout.tsx
-│   │   ├── next-sitemap.js
-│   │   └── .env
+│   │   └── next-sitemap.js
 │   │── public
 │   │   ├── assets
 │   │   │   └── ... folder with assets
@@ -116,6 +115,8 @@ Follow the following instruction to setup the project and run locally
 │   │── package.json
 │   │── package-lock.json
 │   │── next.config.mjs (enabled cross image fetching)
+│   │── .env
+│   │── next-sitemap.js
 │   └── ..... Other configuration files (unaltered)
 ├── .gitignore
 ├── LICENSE
