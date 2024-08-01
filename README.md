@@ -1,4 +1,6 @@
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/efc2070c-432c-4fc0-bf2a-4f9525d06316" alt="Logo">
+</div>
 
 # 🔰 InfoPulse
 
@@ -127,7 +129,7 @@ Contributions are always welcome! Additionally you can contact me by my email: *
 
 ## 📷 Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![banner](https://github.com/user-attachments/assets/d01fef04-c4e3-4393-a9bb-6aacb01ecc57)
 
 ## 🔒 License
 
