@@ -1,6 +1,6 @@
 import cron from 'node-cron';
 
-export const scheduleCronJobs = () => {
+export const scheduleCronJobsUpdateData = () => {
 
     cron.schedule('0,30,59 * * * *', async () => {
 
@@ -8,7 +8,7 @@ export const scheduleCronJobs = () => {
         const API_KEY = process.env.G_NEWS_API_KEY;
 
         // POST URL
-        const POST_URL = 'https://infopulse.onrender.com/api/data/store-news'
+        const POST_URL = 'https://infopulse.onrender.com/api/data/store-news';
 
         // define countries and get random choices
         const countries = ['in', 'br', 'ca', 'fr', 'ie', 'us'];

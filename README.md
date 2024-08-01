@@ -14,13 +14,15 @@
 
 ## 📦 API Reference, Routes & Misc
 
-| Route                      | Type   | Parameter                                                                                           | Description                                       |
-| :------------------------- | :----- | :-------------------------------------------------------------------------------------------------- | :------------------------------------------------ |
-| `/api/services/send-email` | `POST` | `toName`, `toEmail`, `subject`, `message` (all body)                                                | Used to send mails                                |
-| `/api/data/get-news`       | `GET`  | `category`, `country`, `page`, `limit` (all query)                                                  | Used to fetch news                                |
-| `/api/services/store-news` | `POST` | `headline`, `description`, `category`, `country`, `publisher`, `image_link`, `news_link` (all body) | Push news to database fetched by `update-data.js` |
+| Route                      | Type     | Parameter                                                                                           | Description                                       |
+| :------------------------- | :------- | :-------------------------------------------------------------------------------------------------- | :------------------------------------------------ |
+| `/api/services/send-email` | `POST`   | `toName`, `toEmail`, `subject`, `message` (all body)                                                | Used to send mails                                |
+| `/api/data/get-news`       | `GET`    | `category`, `country`, `page`, `limit` (all query)                                                  | Used to fetch news                                |
+| `/api/data/store-news`     | `POST`   | `headline`, `description`, `category`, `country`, `publisher`, `image_link`, `news_link` (all body) | Push news to database fetched by `update-data.js` |
+| `api/data/delete-news`     | `DELETE` | `None`                                                                                              | Delete news every 24 hour (5 items)               |
 
 - This project also has a `cron-job` which runs every `20 minutes` to add new data to database. This may be commmented while on development mode (suggested).
+- Also a `cron-job` to delete database items is scheduled and run `once every day` to delete 5 items from database. This may be also commmented while on development mode (suggested).
 - `Vercel Analytics` is also enabled for this web app
 
 ## 🔩 Environment Variables
@@ -71,7 +73,8 @@ Follow the following instruction to setup the project and run locally
 │   │   ├── data.css
 │   │   └── service.css
 │   │── scripts
-│   │   └── update-data.js
+│   │   ├── update-data.js
+│   │   └── delete-data.js
 │   ├── index.js
 │   │── .env
 │   │── package.json
