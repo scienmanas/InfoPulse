@@ -1,7 +1,8 @@
 import cron from 'node-cron';
 
-export const scheduleCronJobs = () => {
+export const scheduleCronJobsUpdateData = () => {
 
+    // Runs every hour at 0, 30 and 59 minutes
     cron.schedule('0,30,59 * * * *', async () => {
 
         // get ap-key
@@ -62,6 +63,7 @@ export const scheduleCronJobs = () => {
                             method: 'POST',
                             headers: {
                                 "Content-Type": 'application/json',
+                                'auth-token': process.env.AUTH_KEY
                             },
                             body: JSON.stringify(toBeSentData),
                         });

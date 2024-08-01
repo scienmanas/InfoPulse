@@ -6,7 +6,7 @@ const router = express.Router()
 router.post('/send-email', async (req, res) => {
 
     // Get the body data
-    const { toName="", toEmail, subject, message } = req.body;
+    const { toName = "", toEmail, subject, message } = req.body;
 
     try {
 
