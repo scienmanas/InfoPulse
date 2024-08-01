@@ -124,8 +124,8 @@ Follow the following instruction to setup the project and run locally
 
 Contributions are always welcome! Additionally you can contact me by my email: **iamscientistmanas@gmail.com**. Some features which are developmemt and contributions can be made are:
 
-- [] Path with password (in .env) and a cron job associated to it to delete the old news after a certain time intervals also in other endpoints too.
-- [] Support for different languages.
+- [ ] Path with password (in .env) and a cron job associated to it to delete the old news after a certain time intervals also in other endpoints too.
+- [ ] Support for different languages.
 
 ## 📷 Screenshots
 
