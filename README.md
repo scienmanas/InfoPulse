@@ -16,12 +16,12 @@
 
 ## 📦 API Reference, Routes & Misc
 
-| Route                      | Type     | Parameter                                                                                           | Description                                       |
-| :------------------------- | :------- | :-------------------------------------------------------------------------------------------------- | :------------------------------------------------ |
-| `/api/services/send-email` | `POST`   | `toName`, `toEmail`, `subject`, `message` (all body)                                                | Used to send mails                                |
-| `/api/data/get-news`       | `GET`    | `category`, `country`, `page`, `limit` (all query)                                                  | Used to fetch news                                |
-| `/api/data/store-news`     | `POST`   | `headline`, `description`, `category`, `country`, `publisher`, `image_link`, `news_link` (all body) | Push news to database fetched by `update-data.js` |
-| `api/data/delete-news`     | `DELETE` | `None`                                                                                              | Delete news every 24 hour (5 items)               |
+| Route                      | Type     | Protected | Parameter                                                                                           | Description                                       |
+| :------------------------- | :------- | :-------- | :-------------------------------------------------------------------------------------------------- | :------------------------------------------------ |
+| `/api/services/send-email` | `POST`   | No        | `toName`, `toEmail`, `subject`, `message` (all body)                                                | Used to send mails                                |
+| `/api/data/get-news`       | `GET`    | No        | `category`, `country`, `page`, `limit` (all query)                                                  | Used to fetch news                                |
+| `/api/data/store-news`     | `POST`   | Yes       | `headline`, `description`, `category`, `country`, `publisher`, `image_link`, `news_link` (all body) | Push news to database fetched by `update-data.js` |
+| `api/data/delete-news`     | `DELETE` | Yes       | `None`                                                                                              | Delete news every 24 hour (5 items)               |
 
 - This project also has a `cron-job` which runs every `20 minutes` to add new data to database. This may be commmented while on development mode (suggested).
 - Also a `cron-job` to delete database items is scheduled and run `once every day` to delete 5 items from database. This may be also commmented while on development mode (suggested).
@@ -33,13 +33,15 @@ This project requirement .env configuration in `Backend` as well in `Frontend` f
 
 ### Backend
 
-| Varibale         | Description                    |
-| :--------------- | :----------------------------- |
-| `MONGODB_URI`    | Database URI                   |
-| `PORT`           | Port number for backend (5000) |
-| `EMAIL`          | admin mail address             |
-| `PASSWORD`       | App password of email account  |
-| `G_NEWS_API_KEY` | G News API key                 |
+| Varibale         | Description                                     |
+| :--------------- | :---------------------------------------------- |
+| `MONGODB_URI`    | Database URI                                    |
+| `PORT`           | Port number for backend (5000)                  |
+| `EMAIL`          | admin mail address                              |
+| `PASSWORD`       | App password of email account                   |
+| `G_NEWS_API_KEY` | G News API key                                  |
+| `AUTH_KEY`       | Auth key to secure routes                       |
+| `HASHED_KEY`     | Double SHA-256 Hashed Auth key to secure routes |
 
 ### Frontend
 
@@ -77,6 +79,8 @@ Follow the following instruction to setup the project and run locally
 │   │── scripts
 │   │   ├── update-data.js
 │   │   └── delete-data.js
+│   │── middlewares
+│   │   └── protectRoute.js
 │   ├── index.js
 │   │── .env
 │   │── package.json
@@ -124,8 +128,10 @@ Follow the following instruction to setup the project and run locally
 
 Contributions are always welcome! Additionally you can contact me by my email: **iamscientistmanas@gmail.com**. Some features which are developmemt and contributions can be made are:
 
-- [ ] Path with password (in .env) and a cron job associated to it to delete the old news after a certain time intervals also in other endpoints too.
 - [ ] Support for different languages.
+- [ ] Support for narration of news.
+- [ ] Support to save favourite news of user
+- [ ] AI chatbot for user interaction
 
 ## 📷 Screenshots
 

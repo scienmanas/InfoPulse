@@ -1,6 +1,8 @@
 import cron from 'node-cron';
 
 export const scheduleCronJobsDeleteData = () => {
+
+
     cron.schedule('0 0 0 * * *', async () => {
 
         // Delete URL
@@ -21,6 +23,7 @@ export const scheduleCronJobsDeleteData = () => {
                 method: 'DELETE',
                 headers: {
                     "Content-Type": 'application/json',
+                    'auth-token': process.env.AUTH_KEY
                 },
             })
 

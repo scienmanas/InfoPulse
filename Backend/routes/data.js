@@ -1,5 +1,6 @@
 import express from 'express';
 import News from '../models/news.js';
+import protectRoute from '../middlewares/protectRoute.js';
 
 const router = express.Router()
 
@@ -48,7 +49,7 @@ router.get('/get-news', async (req, res) => {
 
 // Route - 2 : POST - Push news items
 
-router.post('/store-news', async (req, res) => {
+router.post('/store-news', protectRoute, async (req, res) => {
 
     // get the data from body
     const { headline, description, category, country, publisher, image_link, news_link } = req.body;
@@ -78,7 +79,7 @@ router.post('/store-news', async (req, res) => {
 
 // Route - 3 : Delete News Items
 
-router.delete('/delete-news', async (req, res) => {
+router.delete('/delete-news', protectRoute, async (req, res) => {
 
     try {
 

@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { connectToDB } from './config/db.js';
 import { config } from 'dotenv';
-import { scheduleCronJobsUpdateData, } from './scripts/update-data.js';
+import { scheduleCronJobsUpdateData } from './scripts/update-data.js';
 import { scheduleCronJobsDeleteData } from './scripts/delete-data.js';
 // Rouest import
 import serviceRoute from './routes/service.js';
