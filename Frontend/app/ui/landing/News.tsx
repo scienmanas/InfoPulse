@@ -60,40 +60,50 @@ export function News(): JSX.Element {
     // loader
     setIsFetching(true);
 
-    // api endpount
-    const API_URI = `https://infopulse.onrender.com/api/data/get-news?category=${configuration.category}&page=${page}&limit=${configuration.limit}&country=${configuration.country}`;
+    try {
 
-    // Hit the endpoint
-    const res = await fetch(API_URI, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
 
-    // Check status code
-    if (res.status === 200) {
-      // parse the data
-      const data = await res.json();
-      if (data.total_pages <= page) {
-        setAllItemsFetched(true);
+
+      // api endpount
+      const API_URI = `https://infopulse.onrender.com/api/data/get-news?category=${configuration.category}&page=${page}&limit=${configuration.limit}&country=${configuration.country}`;
+
+      // Hit the endpoint
+      const res = await fetch(API_URI, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      // Check status code
+      if (res.status === 200) {
+        // parse the data
+        const data = await res.json();
+        if (data.total_pages <= page) {
+          setAllItemsFetched(true);
+          setIsFetching(false);
+          return;
+        }
+        setNewsData((updateData) => [
+          ...updateData,
+          ...data.news, // Assuming `data.news` is an array of news items
+        ]);
+
+        // update page number
+        setPage(page + 1);
+
+        // Stop the loader
         setIsFetching(false);
-        return;
+      } else {
+        console.log("Some error occurred");
+        setIsFetching(false);
+        window.location.href = '/error'
       }
-      setNewsData((updateData) => [
-        ...updateData,
-        ...data.news, // Assuming `data.news` is an array of news items
-      ]);
-
-      // update page number
-      setPage(page + 1);
-
-      // Stop the loader
-      setIsFetching(false);
-    } else {
+    }
+    catch (error) {
       console.log("Some error occurred");
       setIsFetching(false);
-      throw new Error();
+      window.location.href = '/error'
     }
   };
 
