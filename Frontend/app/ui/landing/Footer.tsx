@@ -211,7 +211,7 @@ export function Footer(): JSX.Element {
                 </Link>
               </div>
               <div className="github text-lg hover:text-[#EA8D8D]">
-                <Link href="https://github.com/scienmanas">
+                <Link href="">
                   <FiGithub />
                 </Link>
               </div>
