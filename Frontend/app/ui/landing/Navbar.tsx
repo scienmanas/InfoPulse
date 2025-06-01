@@ -6,7 +6,9 @@ import logo from "@/public/assets/logo/logo.png";
 import { FiGithub } from "react-icons/fi";
 
 export function Navbar(): JSX.Element {
-  const repoLink: string = "https://github.com/scienmanas/InfoPulse";
+  // const repoLink: string = "https://github.com/scienmanas/InfoPulse";
+    const repoLink: string = "";
+
 
   return (
     <div className="relative nav-wrapper w-fit flex items-center mt-4 lg:gap-10 border-2 rounded-2xl px-4 py-2 sm:px-7 sm:py-3 bg-[#27223b] border-yellow-500 gap-5">
