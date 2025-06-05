@@ -6,8 +6,7 @@ import logo from "@/public/assets/logo/logo.png";
 import { FiGithub } from "react-icons/fi";
 
 export function Navbar(): JSX.Element {
-  // const repoLink: string = "https://github.com/scienmanas/InfoPulse";
-    const repoLink: string = "";
+  const repoLink: string = "https://github.com/scienmanas/InfoPulse";
 
 
   return (
