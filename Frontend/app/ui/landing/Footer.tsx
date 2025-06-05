@@ -196,12 +196,12 @@ export function Footer(): JSX.Element {
                 </Link>
               </div>
               <div className="twitter text-lg hover:text-[#EA8D8D]">
-                <Link href="#">
+                <Link href="https://x.com/scienmanas">
                   <FiTwitter />
                 </Link>
               </div>
               <div className="linkedin text-lg hover:text-[#EA8D8D]">
-                <Link href="#">
+                <Link href="https://www.linkedin.com/scienmanas">
                   <CiLinkedin />
                 </Link>
               </div>
@@ -211,7 +211,7 @@ export function Footer(): JSX.Element {
                 </Link>
               </div>
               <div className="github text-lg hover:text-[#EA8D8D]">
-                <Link href="">
+                <Link href="https://github.com/scienmanas/InfoPulse">
                   <FiGithub />
                 </Link>
               </div>
