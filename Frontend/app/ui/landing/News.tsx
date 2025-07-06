@@ -50,22 +50,27 @@ export function News(): JSX.Element {
   const [newsData, setNewsData] = useState<NewsCardProps[]>([]);
   const [allItemsFetched, setAllItemsFetched] = useState(false);
   const [page, setPage] = useState(1);
-  const [configuration, setConfiguration] = useState({
+  const [configurationState, setConfigurationState] = useState({
     category: "world",
     country: "in",
-    limit: 105,
+    limit: 25,
   });
 
-  const fetchData = async () => {
+  const fetchData = async ({
+    category,
+    page,
+    country
+  }: {
+    category: string;
+    page: number;
+    country: string
+  }) => {
     // loader
     setIsFetching(true);
 
     try {
-
-
-
       // api endpount
-      const API_URI = `https://infopulse.onrender.com/api/data/get-news?category=${configuration.category}&page=${page}&limit=${configuration.limit}&country=${configuration.country}`;
+      const API_URI = `https://infopulse.onrender.com/api/data/get-news?category=${category}&page=${page}&limit=${configurationState.limit}&country=${country}`;
 
       // Hit the endpoint
       const res = await fetch(API_URI, {
@@ -108,14 +113,18 @@ export function News(): JSX.Element {
   };
 
   useEffect(() => {
-    setPage(1);
-    setNewsData([]);
-    setAllItemsFetched(false);
-    fetchData();
-  }, [configuration]);
+    const initialFetch = async () => {
+      await fetchData({
+        category: configurationState.category,
+        country: configurationState.country,
+        page: page
+      });
+    };
+    initialFetch();
+  }, []);
 
   const lastElementRef = useInfiniteScroll(
-    fetchData,
+    () => fetchData({category: configurationState.category, page: page, country: configurationState.country}),
     isFetching,
     allItemsFetched
   );
@@ -131,10 +140,13 @@ export function News(): JSX.Element {
               onChange={async (e) => {
                 const target = e.target as HTMLSelectElement;
                 // update the state
-                setConfiguration((prev) => ({
+                setConfigurationState((prev) => ({
                   ...prev,
                   category: target.value,
                 }));
+                setNewsData([]);
+                setAllItemsFetched(false);
+                await fetchData({category: target.value?? "", country: configurationState.country, page: 1})
               }}
             >
               {categoryList.map((category) => (
@@ -148,13 +160,16 @@ export function News(): JSX.Element {
             <select
               className="rounded-lg p-2 border-[2px] border-blue-400 bg-gray-200 font-semibold  hover:border-yellow-600"
               defaultValue={`in`}
-              onChange={(e) => {
+              onChange={async (e) => {
                 const target = e.target as HTMLSelectElement;
                 // update the state
-                setConfiguration((prev) => ({
+                setConfigurationState((prev) => ({
                   ...prev,
                   country: target.value,
                 }));
+                setNewsData([]);
+                setAllItemsFetched(false);
+                await fetchData({ category: configurationState.category, country: target.value ?? "", page: 1 })
               }}
             >
               {countriesList.map((countryData) => (
