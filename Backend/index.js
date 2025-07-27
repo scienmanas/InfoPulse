@@ -22,7 +22,7 @@ await connectToDB();
 
 // Configure CORS
 const corsConfiguration = {
-    origin: ["https://info-pulse-six.vercel.app"],
+    origin: ["https://info-pulse-six.vercel.app", "https://infopulse.scienmanas.dev"],
     optionSucessStatus: 200
 }
 
